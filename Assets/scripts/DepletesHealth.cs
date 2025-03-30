@@ -10,6 +10,10 @@ public class DepletesHealth : MonoBehaviour {
 
     // Update is called once per frame
     public void ReduceHealth(int intensity) {
-        rt.localScale = new Vector3(rt.localScale.x - 0.1f*intensity, rt.localScale.y, rt.localScale.z);
+        Vector3 new_result = rt.localScale = new Vector3(rt.localScale.x - 0.1f*intensity, rt.localScale.y, rt.localScale.z);
+        if (new_result.x < 0) {
+            rt.localScale = rt.localScale = new Vector3(0, rt.localScale.y, rt.localScale.z);
+
+        }
     }
 }

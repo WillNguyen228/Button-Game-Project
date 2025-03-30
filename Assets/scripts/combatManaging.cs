@@ -30,7 +30,7 @@ public class combatManaging : MonoBehaviour
 
     public void SetPlayerChoiceToNewspaper() {
         humanchoice = 0;
-        descriptiontext.text = "The human chooses the newspaper!";
+        descriptiontext.text = "The human chooses to fight with the newspaper!";
     }
 
     public void DetermineOutcome() {
@@ -55,16 +55,39 @@ public class combatManaging : MonoBehaviour
                 descriptiontext.text += " Some mosquitos are swatted, but they still keep coming";
             } else if (humanchoice == TOXIN) {
                 FlyHealth.ReduceHealth(2);
+                descriptiontext.text += " All their babies are dead!";
             } else {
                 HumanHealth.ReduceHealth(2);
+                descriptiontext.text += " Their babies learned magic from the humans!";
             }
         } else {
+            descriptiontext.text += " And the mosquitos chose to send their mutants!";
             if (humanchoice == NEWSPAPER) {
                 HumanHealth.ReduceHealth(2);
+                descriptiontext.text += " The newspaper gets torn apart by the mutant strength!";
             } else if (humanchoice == TOXIN) {
                 HumanHealth.ReduceHealth(1);
                 FlyHealth.ReduceHealth(1);
+                descriptiontext.text += " The mutants survive, but were distraught by the babies that were killed!";
+            } else {
+                FlyHealth.ReduceHealth(2);
+                descriptiontext.text += " Turns out the mutant are allergic to magic!";
             }
         }
     }
+
+    public void SetPlayerChoiceToToxin() {
+        humanchoice = 1;
+        descriptiontext.text = "The human chooses to fight with the toxin!";
+    }
+
+    public void SetPlayerChoiceToMagic() {
+        humanchoice = 2;
+        descriptiontext.text = "The human chooses to fight with magic!";
+    }
+
+    public void FlyChoose() {
+        flychoice = UnityEngine.Random.Range(0, 3);
+    }
+    
 }

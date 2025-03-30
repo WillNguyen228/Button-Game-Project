@@ -7,4 +7,8 @@ public class LockButton : MonoBehaviour
     public void LockPlayer() {
         GetComponent<Button>().interactable = false;        
     }
+
+    public void UnlockPlayer() {
+        GetComponent<Button>().interactable = true;        
+    }
 }
