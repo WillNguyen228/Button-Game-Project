@@ -41,7 +41,7 @@ public class mosquitoMove : MonoBehaviour
         Vector2 directionToMouse = mousePos - buttonPos2D;
         // Debug.Log(directionToMouse);
         float distance = Vector2.Distance(transform.position, mousePos);
-        Debug.Log(distance);
+        // Debug.Log(distance);
         if (distance < repulsionRadius)
         {
             // Move the object in the opposite direction
