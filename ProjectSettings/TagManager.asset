@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 3
   tags:
   - Colide
+  - CollideLeft
+  - CollideRight
+  - CollideRoof
+  - CollideFloor
   layers:
   - Default
   - TransparentFX

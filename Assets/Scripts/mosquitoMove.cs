@@ -11,7 +11,7 @@ public class mosquitoMove : MonoBehaviour
     float rand_direction2;
     float rand_direction1;
     bool once = true;
-    public float repulsionRadius = 10f;
+    public float repulsionRadius = 20f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -44,19 +44,22 @@ public class mosquitoMove : MonoBehaviour
             once = false;
         }
 
-        // Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        // Vector3 directionToMouse = (mousePos - transform.position).normalized;
-        // float distance = Vector3.Distance(transform.position, mousePos);
-        // // Debug.Log("Hit:" + bounce.transform.name);
-        // if (distance < repulsionRadius)
-        // {
-        //     // Move the object in the opposite direction
-        //     transform.Translate(-directionToMouse * 3f * Time.deltaTime);
-        //     // rand_direction1 = -directionToMouse[0];
-        //     // rand_direction2 = -directionToMouse[1];
-        // }
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 buttonPos2D = new Vector2(transform.position.x, transform.position.y);
+        Vector2 directionToMouse = mousePos - buttonPos2D;
+        // Debug.Log(directionToMouse);
+        float distance = Vector2.Distance(transform.position, mousePos);
+        Debug.Log(distance);
+        if (distance < repulsionRadius)
+        {
+            // Move the object in the opposite direction
+            Debug.Log("repulsed");
+            // transform.Translate(-directionToMouse * 3f * Time.deltaTime);
+            rand_direction1 = -directionToMouse[0];
+            rand_direction2 = -directionToMouse[1];
+        }
 
-        Vector3 moveDirection = new Vector3(rand_direction1, rand_direction2).normalized; // Example direction
+        Vector2 moveDirection = new Vector2(rand_direction1, rand_direction2).normalized; // Example direction
         rb2d.linearVelocity = moveDirection * 10f; // Set the velocity of the Rigidbody2D
 
     }
@@ -64,22 +67,22 @@ public class mosquitoMove : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D bounce)
     {
         if (bounce.gameObject.tag == "CollideLeft"){
-            Debug.Log("Hit:" + bounce.transform.name);
+            // Debug.Log("Hit:" + bounce.transform.name);
             rand_direction1 = UnityEngine.Random.Range(0f, 1f);
             rand_direction2 = UnityEngine.Random.Range(-1f, 1f);
         }
         else if (bounce.gameObject.tag == "CollideRight"){
-            Debug.Log("Hit:" + bounce.transform.name);
+            // Debug.Log("Hit:" + bounce.transform.name);
             rand_direction1 = UnityEngine.Random.Range(-1f, 0f);
             rand_direction2 = UnityEngine.Random.Range(-1f, 1f);
         }
         else if (bounce.gameObject.tag == "CollideRoof"){
-            Debug.Log("Hit:" + bounce.transform.name);
+            // Debug.Log("Hit:" + bounce.transform.name);
             rand_direction1 = UnityEngine.Random.Range(-1f, 1f);
             rand_direction2 = UnityEngine.Random.Range(-1f, 0f);
         }
         else if (bounce.gameObject.tag == "CollideFloor"){
-            Debug.Log("Hit:" + bounce.transform.name);
+            // Debug.Log("Hit:" + bounce.transform.name);
             rand_direction1 = UnityEngine.Random.Range(-1f, 1f);
             rand_direction2 = UnityEngine.Random.Range(0f, 1f);
         }
