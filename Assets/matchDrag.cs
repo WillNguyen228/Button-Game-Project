@@ -33,7 +33,6 @@ public class matchDrag : MonoBehaviour
     }
     private void OnMouseUp() {
         dragging = false;
-        Debug.Log("Match was moved");
         transform.position = origin;
         images.SetActive(true);
     }

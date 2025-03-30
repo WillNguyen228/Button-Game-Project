@@ -39,10 +39,8 @@ public class toxinDrag : MonoBehaviour
     }
     private void OnMouseUp() {
         dragging = false;
-        Debug.Log("Toxin was moved");
         if (bucket.toxic == true) {
             bucket.changeImage();
-            Debug.Log("Water is Toxic");
         }
         transform.position = origin;
     }

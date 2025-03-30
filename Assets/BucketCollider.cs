@@ -29,7 +29,6 @@ public class BucketCollider : MonoBehaviour
     }
 
     public void OnTriggerEnter2D(Collider2D other) {
-        Debug.Log("Collided bucket");
         if (other.tag == "Toxin") {
             toxic = true;
         }

@@ -28,7 +28,6 @@ public class shearDrag : MonoBehaviour
     }
     private void OnMouseUp() {
         dragging = false;
-        Debug.Log("Shear was moved");
         transform.position = origin;
     }
 }
