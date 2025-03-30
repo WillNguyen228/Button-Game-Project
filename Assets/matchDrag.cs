@@ -2,19 +2,15 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class toxinDrag : MonoBehaviour
+public class matchDrag : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private Vector3 origin;
     private bool dragging;
     
-    //Set this in the Inspector
-    private BucketCollider bucket;
-    
     void Start() {
         origin = transform.position;
         dragging = false;
-        bucket = GameObject.Find("Bucket").GetComponent<BucketCollider>();
     }
 
     private Vector3 offset;
@@ -30,20 +26,9 @@ public class toxinDrag : MonoBehaviour
             transform.position = new Vector3(mouse.x, mouse.y, transform.position.z);
         }
     }
-    public void OnTriggerEnter2D(Collider2D other) {
-        Debug.Log("Collided toxin");
-        if (other.tag == "Toxin") {
-            bucket.toxic = true;
-        }
-        
-    }
     private void OnMouseUp() {
         dragging = false;
-        Debug.Log("Toxin was moved");
-        if (bucket.toxic == true) {
-            bucket.changeImage();
-            Debug.Log("Water is Toxic");
-        }
+        Debug.Log("Match was moved");
         transform.position = origin;
     }
 }
