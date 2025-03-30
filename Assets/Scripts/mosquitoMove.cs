@@ -22,15 +22,7 @@ public class mosquitoMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // float horizontalInput = Input.GetAxis("Horizontal"); // Returns -1, 0, or 1
-        // float verticalInput = Input.GetAxis("Vertical"); // Returns -1, 0, or 1
-        // float moveSpeed = 5f; // Speed of the mosquito movement
 
-        // // Calculate movement direction
-        // Vector3 movement = new Vector3(horizontalInput, verticalInput, 0f); // Only move on the X-axis for 2D
-
-        // // Apply movement to the sprite's position
-        // transform.position += movement * moveSpeed * Time.deltaTime;
     }
 
 
@@ -53,15 +45,13 @@ public class mosquitoMove : MonoBehaviour
         if (distance < repulsionRadius)
         {
             // Move the object in the opposite direction
-            Debug.Log("repulsed");
-            // transform.Translate(-directionToMouse * 3f * Time.deltaTime);
+            // Debug.Log("repulsed");
             rand_direction1 = -directionToMouse[0];
             rand_direction2 = -directionToMouse[1];
         }
 
         Vector2 moveDirection = new Vector2(rand_direction1, rand_direction2).normalized; // Example direction
         rb2d.linearVelocity = moveDirection * 10f; // Set the velocity of the Rigidbody2D
-
     }
 
     private void OnCollisionEnter2D(Collision2D bounce)
